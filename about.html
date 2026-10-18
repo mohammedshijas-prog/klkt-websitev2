@@ -5039,6 +5039,25 @@ footer[data-section-container] .bg-surface-bg-primary { background-color: #2b146
   section[id="[About]-Blurb"] .my-8 { margin-block: 8px; }
 }
 </style>
+<style>
+/* Scrolled header: frosted glass */
+.klkt-header{transition:top .25s ease,margin .25s ease,border-radius .25s ease,box-shadow .25s ease,background-color .25s ease,backdrop-filter .25s ease}
+.klkt-header.is-scrolled{
+  background:rgba(255,255,255,.62);
+  -webkit-backdrop-filter:saturate(180%) blur(22px);
+  backdrop-filter:saturate(180%) blur(22px);
+  box-shadow:0 12px 32px rgba(7,26,49,.12),0 1px 2px rgba(7,26,49,.05),inset 0 0 0 1px rgba(255,255,255,.55);
+}
+.klkt-header.is-scrolled .klkt-getapp__menu{
+  background:rgba(255,255,255,.86);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  backdrop-filter:saturate(180%) blur(20px);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .klkt-header.is-scrolled{background:rgba(255,255,255,.95)}
+}
+@media (prefers-reduced-motion:reduce){.klkt-header{transition:none}}
+</style>
 </body>
 <style id="klkt-people-css">
 .klkt-people{background:var(--color-ramp-orange-025,#fcfbf8);padding:clamp(72px,8vw,120px) max(20px,var(--section-padding-x,40px))}

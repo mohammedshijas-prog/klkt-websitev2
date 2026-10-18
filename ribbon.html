@@ -5393,6 +5393,80 @@ const productionHostnames = ["calendly.com","www.calendly.com"];
   }
   .robo-cam__labels { opacity: 1; }
 }
+
+  /* Band: phone vs Roboband comparison */
+  .robo-compare { background: #fff; padding: 140px 0 40px; }
+  .robo-compare__inner { padding: 0 clamp(40px, 8vw, 140px); }
+  .robo-compare__head {
+    display: grid; gap: 28px 64px; align-items: end; margin-bottom: 56px;
+  }
+  @media (min-width: 1000px) { .robo-compare__head { grid-template-columns: 1.15fr 0.85fr; } }
+  .robo-compare__title {
+    margin: 0; font-family: var(--font-calendly-sans), system-ui, sans-serif; font-weight: 500;
+    font-size: clamp(38px, 4.6vw, 64px); line-height: 1.02; letter-spacing: -0.032em; color: #1d1d1f;
+    text-wrap: balance;
+  }
+  .robo-compare__title span { display: block; color: #7c3aed; }
+  .robo-compare__lede {
+    margin: 0; font-family: var(--font-geist), system-ui, sans-serif;
+    font-size: clamp(16px, 1.35vw, 20px); line-height: 1.45; letter-spacing: -0.012em; color: #5d6470;
+    max-width: 40ch;
+  }
+  .robo-compare__grid { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .robo-compare__grid { grid-template-columns: 1fr 1fr; } }
+
+  .robo-opt {
+    position: relative; display: flex; flex-direction: column; min-width: 0;
+    padding: clamp(28px, 3.4vw, 46px); border-radius: 28px; overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .robo-opt--light { background: #f5f5f7; color: #1d1d1f; }
+  .robo-opt--dark { background: #15161a; color: #fff; }
+  .robo-opt--dark::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(120% 90% at 85% 0%, rgba(124,58,237,0.34) 0%, rgba(124,58,237,0) 62%);
+  }
+  .robo-opt > * { position: relative; z-index: 1; }
+  @media (hover: hover) {
+    .robo-opt:hover { transform: translateY(-4px); box-shadow: 0 22px 50px -24px rgba(16,18,28,0.45); }
+  }
+  .robo-opt__eyebrow {
+    margin: 0 0 14px; font-family: var(--font-geist), system-ui, sans-serif; font-size: 12px;
+    font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #7c3aed;
+  }
+  .robo-opt--dark .robo-opt__eyebrow { color: #b794ff; }
+  .robo-opt__title {
+    margin: 0 0 28px; font-family: var(--font-calendly-sans), system-ui, sans-serif; font-weight: 500;
+    font-size: clamp(26px, 2.5vw, 36px); line-height: 1.08; letter-spacing: -0.028em; text-wrap: balance;
+  }
+  .robo-opt__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+  .robo-opt__list li {
+    display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: start;
+    font-family: var(--font-geist), system-ui, sans-serif;
+    font-size: clamp(15px, 1.15vw, 17px); line-height: 1.45; letter-spacing: -0.012em;
+  }
+  .robo-opt__list svg { width: 24px; height: 24px; display: block; margin-top: 0.05em; }
+  .robo-opt--light .robo-opt__list li { color: #1d1d1f; }
+  .robo-opt--dark .robo-opt__list li { color: #e7e7ec; }
+  .robo-opt__cta {
+    align-self: flex-start; margin-top: 34px; display: inline-flex; align-items: center; gap: 10px;
+    min-height: 50px; padding: 0 24px; border-radius: 999px; background: #fff; color: #15161a;
+    font-family: var(--font-geist), system-ui, sans-serif; font-size: 16px; font-weight: 500;
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+  }
+  .robo-opt__cta svg { width: 16px; height: 16px; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1); }
+  .robo-opt__cta:hover { background: #ede7ff; }
+  .robo-opt__cta:hover svg { transform: translateX(4px); }
+  .robo-opt__cta:focus-visible { outline: 2px solid #9b6bff; outline-offset: 3px; }
+  .robo-opt__foot {
+    margin: 34px 0 0; font-family: var(--font-geist), system-ui, sans-serif;
+    font-size: 15px; line-height: 1.45; color: #6b7280;
+  }
+  @media (max-width: 899px) { .robo-compare { padding: 88px 0 24px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .robo-opt, .robo-opt__cta, .robo-opt__cta svg { transition: none; }
+    .robo-opt:hover { transform: none; }
+  }
 </style><header class="klkt-header" id="site-header">
   <div class="klkt-header__inner">
     <a href="/" class="klkt-brand" aria-label="KLKT by CNTXT AI">
@@ -5445,6 +5519,7 @@ const productionHostnames = ["calendly.com","www.calendly.com"];
     <a class="robo-hero__cta font-geist" href="mailto:pr@cntxt.tech?subject=KLKT%20Band">Get now</a>
   </div>
 </section>
+<section id="ribbon-compare" class="robo-compare" aria-labelledby="ribbon-compare-title"><div class="robo-compare__inner"><div class="robo-compare__head"><h2 class="robo-compare__title" id="ribbon-compare-title">Start with your phone.<span>Scale with Roboband.</span></h2><p class="robo-compare__lede">Most tasks need only a phone on a head strap. Roboband is for teams and projects that need more.</p></div><div class="robo-compare__grid"><div class="robo-opt robo-opt--light"><p class="robo-opt__eyebrow">Phone on a head strap</p><h3 class="robo-opt__title">For most tasks</h3><ul class="robo-opt__list"><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity="0.13"/><path d="M7.6 12.4l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your own phone, sideways on a head strap</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity="0.13"/><path d="M7.6 12.4l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Order a strap in the app, or ask us</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity="0.13"/><path d="M7.6 12.4l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every kind of task in the app</span></li></ul><p class="robo-opt__foot">Nothing to buy to get started.</p></div><div class="robo-opt robo-opt--dark"><p class="robo-opt__eyebrow">Roboband</p><h3 class="robo-opt__title">For long shifts and partner sites</h3><ul class="robo-opt__list"><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity="0.13"/><path d="M7.6 12.4l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Up to 8 synced cameras and a wristband</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity="0.13"/><path d="M7.6 12.4l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hot-swap power for a full shift</span></li><li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity="0.13"/><path d="M7.6 12.4l3 3 5.8-6.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Provided by us to partner teams</span></li></ul><a class="robo-opt__cta" href="mailto:pr@cntxt.tech?subject=KLKT%20Band">Talk to us <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12.5 5.5L19 12l-6.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></div></section>
 <section id="ribbon-shift" class="robo-shift" aria-roledescription="carousel" aria-label="Built for any shift">
   <h2 class="robo-shift__title font-calendly-sans">Built for any shift.</h2>
   <div class="robo-shift__viewport" tabindex="0">
@@ -6009,5 +6084,24 @@ footer[data-section-container] .bg-surface-bg-primary { background-color: #2b146
   /* Lab / About */
   section[id="[About]-Blurb"] .my-8 { margin-block: 8px; }
 }
+</style>
+<style>
+/* Scrolled header: frosted glass */
+.klkt-header{transition:top .25s ease,margin .25s ease,border-radius .25s ease,box-shadow .25s ease,background-color .25s ease,backdrop-filter .25s ease}
+.klkt-header.is-scrolled{
+  background:rgba(255,255,255,.62);
+  -webkit-backdrop-filter:saturate(180%) blur(22px);
+  backdrop-filter:saturate(180%) blur(22px);
+  box-shadow:0 12px 32px rgba(7,26,49,.12),0 1px 2px rgba(7,26,49,.05),inset 0 0 0 1px rgba(255,255,255,.55);
+}
+.klkt-header.is-scrolled .klkt-getapp__menu{
+  background:rgba(255,255,255,.86);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  backdrop-filter:saturate(180%) blur(20px);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .klkt-header.is-scrolled{background:rgba(255,255,255,.95)}
+}
+@media (prefers-reduced-motion:reduce){.klkt-header{transition:none}}
 </style>
 </body></html>
