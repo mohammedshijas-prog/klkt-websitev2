@@ -4900,6 +4900,79 @@ const productionHostnames = ["calendly.com","www.calendly.com"];
 .klkt-faq details p{margin:0 0 22px;max-width:62ch;color:#5f6d77;font:400 16px/1.5 var(--font-geist),system-ui,sans-serif}
 </style>
 <style>
+/* Home: latest from the blog */
+.klkt-blog{background:#fff;padding:clamp(64px,7vw,100px) max(20px,var(--section-padding-x,40px))}
+.klkt-blog__in{max-width:1280px;margin-inline:auto}
+.klkt-blog__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,3.4vw,44px)}
+.klkt-blog__head h2{margin:0;font:500 clamp(30px,3.4vw,48px)/1.06 var(--font-calendly-sans),system-ui,sans-serif;letter-spacing:-.03em;color:#1d1d1f;text-wrap:balance}
+.klkt-blog__head p{margin:12px 0 0;max-width:46ch;color:#5f6d77;font:400 clamp(15px,1.2vw,18px)/1.45 var(--font-geist),system-ui,sans-serif}
+.klkt-blog__all{flex:none;display:inline-flex;align-items:center;gap:9px;color:#7a3cf5;text-decoration:none;font:500 16px/1 var(--font-geist),system-ui,sans-serif}
+.klkt-blog__all svg{width:15px;height:15px;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.klkt-blog__all:hover svg{transform:translateX(4px)}
+.klkt-blog__all:focus-visible{outline:2px solid #9b6bff;outline-offset:3px;border-radius:6px}
+.klkt-blog__grid{display:grid;gap:clamp(18px,2vw,28px);grid-template-columns:1fr}
+@media (min-width:720px){.klkt-blog__grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1040px){.klkt-blog__grid{grid-template-columns:repeat(3,1fr)}}
+.klkt-blog__card{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:22px;overflow:hidden;background:#f5f5f7;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover){.klkt-blog__card:hover{transform:translateY(-4px);box-shadow:0 20px 44px -22px rgba(16,18,28,.4)}}
+.klkt-blog__card:focus-visible{outline:2px solid #9b6bff;outline-offset:3px}
+.klkt-blog__thumb{position:relative;aspect-ratio:16/10;background:#e9eaee;overflow:hidden}
+.klkt-blog__thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover){.klkt-blog__card:hover .klkt-blog__thumb img{transform:scale(1.04)}}
+.klkt-blog__body{display:flex;flex-direction:column;gap:10px;padding:clamp(18px,1.8vw,24px)}
+.klkt-blog__meta{display:flex;align-items:center;gap:10px;font:400 13px/1 var(--font-geist),system-ui,sans-serif;color:#6b7280}
+.klkt-blog__topic{color:#7a3cf5;font-weight:600;text-transform:uppercase;letter-spacing:.09em;font-size:11px}
+.klkt-blog__card h3{margin:0;font:500 clamp(18px,1.5vw,21px)/1.25 var(--font-calendly-sans),system-ui,sans-serif;letter-spacing:-.02em;color:#1d1d1f;text-wrap:balance}
+.klkt-blog__card p{margin:0;font:400 15px/1.5 var(--font-geist),system-ui,sans-serif;color:#5f6d77;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.klkt-blog__card,.klkt-blog__thumb img,.klkt-blog__all svg{transition:none}.klkt-blog__card:hover{transform:none}}
+</style>
+<section class="klkt-blog" id="klkt-blog" aria-labelledby="klkt-blog-h">
+  <div class="klkt-blog__in">
+    <div class="klkt-blog__head">
+      <div>
+        <h2 id="klkt-blog-h">From the blog.</h2>
+        <p>How tasks are reviewed, what a clear recording looks like, and what gets accepted.</p>
+      </div>
+      <a class="klkt-blog__all" href="blog.html">Read the blog <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12.5 5.5L19 12l-6.5 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="klkt-blog__grid" id="klkt-blog-grid"></div>
+  </div>
+</section>
+<script>
+(function () {
+  var grid = document.getElementById('klkt-blog-grid');
+  var section = document.getElementById('klkt-blog');
+  if (!grid) return;
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function when(d) {
+    var t = new Date(d);
+    return isNaN(t) ? '' : t.toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+  fetch('/content/blog.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (data) {
+      var posts = (data && data.posts || [])
+        .filter(function (p) { return p && p.published !== false && p.slug; })
+        .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
+        .slice(0, 3);
+      if (!posts.length) { section.hidden = true; return; }
+      grid.innerHTML = posts.map(function (p) {
+        var img = p.image ? '<div class="klkt-blog__thumb"><img src="' + esc(p.image) + '" alt="' +
+          esc(p.imageAlt || '') + '" loading="lazy" decoding="async"></div>' : '';
+        var topic = p.topic ? '<span class="klkt-blog__topic">' + esc(p.topic) + '</span>' : '';
+        return '<a class="klkt-blog__card" href="/blog/post.html?slug=' + encodeURIComponent(p.slug) + '">' +
+          img + '<div class="klkt-blog__body"><div class="klkt-blog__meta">' + topic +
+          '<time datetime="' + esc(p.date) + '">' + esc(when(p.date)) + '</time></div>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          (p.excerpt ? '<p>' + esc(p.excerpt) + '</p>' : '') + '</div></a>';
+      }).join('');
+    })
+    .catch(function () { section.hidden = true; });   // no posts, no empty section
+})();
+</script>
+
+<style>
 /* Home: backed by CNTXT AI */
 .klkt-backed{background:var(--color-ramp-orange-025,#fcfbf8);padding:clamp(64px,7vw,96px) max(20px,var(--section-padding-x,40px))}
 .klkt-backed__in{max-width:1280px;margin-inline:auto;display:grid;gap:20px}
