@@ -4904,9 +4904,11 @@ const productionHostnames = ["calendly.com","www.calendly.com"];
 @media (min-width:1000px){.klkt-backed__in{grid-template-columns:1fr 1fr;align-items:stretch}}
 .klkt-backed__col{display:grid;gap:20px;align-content:start}
 .klkt-backed__lead{background:#111216;color:#fff;border-radius:28px;padding:clamp(28px,3vw,44px)}
-.klkt-backed__lead img{height:26px;width:auto;display:block;margin-bottom:26px;filter:brightness(0) invert(1)}
+.klkt-backed__lead .klkt-backed__lockup{display:flex;align-items:center;gap:10px;margin:0 0 26px}
+.klkt-backed__lockup img{height:24px;width:auto;display:block;filter:brightness(0) invert(1)}
+.klkt-backed__lockup span{font:600 17px/1 var(--font-geist),system-ui,sans-serif;letter-spacing:.06em;color:#fff}
 .klkt-backed__lead h2{margin:0;font:500 clamp(30px,3.3vw,46px)/1.06 var(--font-calendly-sans),system-ui,sans-serif;letter-spacing:-.03em;text-wrap:balance}
-.klkt-backed__lead p{margin:18px 0 0;max-width:34ch;color:#c9cbd4;font:400 clamp(15px,1.2vw,18px)/1.45 var(--font-geist),system-ui,sans-serif}
+.klkt-backed__lead p:not(.klkt-backed__lockup){margin:18px 0 0;max-width:34ch;color:#c9cbd4;font:400 clamp(15px,1.2vw,18px)/1.45 var(--font-geist),system-ui,sans-serif}
 .klkt-backed__stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .klkt-backed__stat{border-radius:24px;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;justify-content:flex-end;min-height:150px}
 .klkt-backed__stat--a{background:linear-gradient(145deg,#8b4cff 0%,#6a2fe0 100%);color:#fff}
@@ -4915,17 +4917,19 @@ const productionHostnames = ["calendly.com","www.calendly.com"];
 .klkt-backed__stat span{margin-top:10px;font:400 14px/1.4 var(--font-geist),system-ui,sans-serif;opacity:.85}
 .klkt-backed__trust{background:#fff;border-radius:24px;padding:clamp(22px,2.4vw,30px);box-shadow:inset 0 0 0 1px #ececef}
 .klkt-backed__trust p{margin:0 0 18px;font:400 14px/1 var(--font-geist),system-ui,sans-serif;color:#6b7280}
-.klkt-backed__logos{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,3vw,40px)}
-.klkt-backed__logos span{font:500 clamp(15px,1.3vw,19px)/1 var(--font-geist),system-ui,sans-serif;color:#1d1d1f;letter-spacing:-.01em}
-.klkt-backed__logos img{height:22px;width:auto;opacity:.8}
+.klkt-backed__logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));align-items:center;gap:22px clamp(16px,2vw,30px)}
+.klkt-backed__logo{display:flex!important;align-items:center}
+.klkt-backed__logos>*{display:flex;align-items:center;justify-content:flex-start;min-height:26px}
+.klkt-backed__logos span{font:500 clamp(14px,1.15vw,17px)/1 var(--font-geist),system-ui,sans-serif;color:#454a52;letter-spacing:-.01em;white-space:nowrap}
+.klkt-backed__logos img{max-height:24px;max-width:100%;width:auto;height:auto;object-fit:contain;opacity:.72;filter:grayscale(1)}
 .klkt-backed__media{position:relative;border-radius:28px;overflow:hidden;background:#e9eaee;min-height:min(640px,62vw)}
-.klkt-backed__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.klkt-backed__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block}
 .klkt-backed__tag{position:absolute;left:18px;top:18px;z-index:1;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);font:400 14px/1 var(--font-geist),system-ui,sans-serif;color:#1d1d1f}
 .klkt-backed__tag b{font-weight:600}
 @media (max-width:999px){.klkt-backed__media{min-height:380px;order:-1}}
 @media (max-width:520px){.klkt-backed__stats{grid-template-columns:1fr}}
 </style>
-<section class="klkt-backed" aria-labelledby="klkt-backed-h"><div class="klkt-backed__in"><div class="klkt-backed__col"><div class="klkt-backed__lead"><img src="/media/klkt/cntxt-mark.svg" alt="CNTXT AI" width="120" height="26"><h2 id="klkt-backed-h">Backed by a real company.</h2><p>KLKT is built by CNTXT AI, a data and AI company in Abu Dhabi.</p></div><div class="klkt-backed__stats"><div class="klkt-backed__stat klkt-backed__stat--a"><b>$60M</b><span>Series A raised by CNTXT AI, June 2026</span></div><div class="klkt-backed__stat klkt-backed__stat--b"><b>500K+</b><span>users across our products</span></div></div><div class="klkt-backed__trust"><p>Trusted by teams across our products</p><div class="klkt-backed__logos"><span>Oracle</span><span>Nationwide</span><span>TII</span><span>Venture One</span><img src="/v2/img/logos/client-logo-yellow-pages.png" alt="Yellow Pages" loading="lazy" decoding="async"><img src="/v2/img/logos/client-logo-adu.png" alt="Abu Dhabi University" loading="lazy" decoding="async"><img src="/v2/img/logos/client-logo-indebted.png" alt="InDebted" loading="lazy" decoding="async"><img src="/v2/img/logos/client-logo-property-finder.png" alt="Property Finder" loading="lazy" decoding="async"></div></div></div><div class="klkt-backed__media"><span class="klkt-backed__tag">CNTXT AI · Abu Dhabi</span><img src="/v2/img/cntxt-ai-team-at-office.webp" alt="The CNTXT AI team at the Abu Dhabi office" loading="lazy" decoding="async"></div></div></section>
+<section class="klkt-backed" aria-labelledby="klkt-backed-h"><div class="klkt-backed__in"><div class="klkt-backed__col"><div class="klkt-backed__lead"><p class="klkt-backed__lockup"><img src="/media/klkt/cntxt-mark.svg" alt="" width="26" height="26" aria-hidden="true"><span>CNTXT AI</span></p><h2 id="klkt-backed-h">Backed by a real company.</h2><p>KLKT is built by CNTXT AI, a data and AI company in Abu Dhabi.</p></div><div class="klkt-backed__stats"><div class="klkt-backed__stat klkt-backed__stat--a"><b>$60M</b><span>Series A raised by CNTXT AI, June 2026</span></div><div class="klkt-backed__stat klkt-backed__stat--b"><b>500K+</b><span>users across our products</span></div></div><div class="klkt-backed__trust"><p>Trusted by teams across our products</p><div class="klkt-backed__logos"><span>Oracle</span><span>Nationwide</span><span>TII</span><span>Venture One</span><img src="/v2/img/logos/client-logo-yellow-pages.png" alt="Yellow Pages" loading="lazy" decoding="async"><img src="/v2/img/logos/client-logo-adu.png" alt="Abu Dhabi University" loading="lazy" decoding="async"><img src="/v2/img/logos/client-logo-indebted.png" alt="InDebted" loading="lazy" decoding="async"><img src="/v2/img/logos/client-logo-property-finder.png" alt="Property Finder" loading="lazy" decoding="async"></div></div></div><div class="klkt-backed__media"><span class="klkt-backed__tag">CNTXT AI · Abu Dhabi</span><img src="/v2/img/cntxt-ai-team-at-office.webp" alt="The CNTXT AI team at the Abu Dhabi office" loading="lazy" decoding="async"></div></div></section>
 <section id="faq" class="klkt-faq" aria-labelledby="klkt-faq-h">
   <div class="klkt-faq__in">
     <h2 id="klkt-faq-h">Questions, answered.</h2>
