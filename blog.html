@@ -95,6 +95,14 @@
   .klkt-header.is-scrolled{background:rgba(255,255,255,.95)}
 }
 @media (prefers-reduced-motion:reduce){.klkt-header{transition:none}}
+/* Mobile: stop the header spilling past the viewport */
+@media (max-width:760px){
+  .klkt-header__inner{min-width:0}
+  .klkt-menu-btn{margin-left:0}
+  .klkt-brand{min-width:0;flex-shrink:1;overflow:hidden}
+  .klkt-brand img{max-width:100%;height:auto}
+}
+
 </style>
 </body>
 </html>

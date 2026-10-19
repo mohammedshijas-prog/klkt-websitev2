@@ -5818,6 +5818,9 @@ footer[data-section-container] .bg-surface-bg-primary { background-color: #2b146
 .klkt-flow__layer{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}
 .klkt-flow__layer.on{opacity:1}
 .klkt-flow__layer>img{width:100%;height:auto;max-width:none;display:block}
+/* fill the screen: height:auto left a gap under the shot, since the image is
+   relatively wider than the screen. The scrolling layer keeps height:auto. */
+.klkt-flow__layer:not(.klkt-flow__scroll)>img{height:100%;object-fit:cover;object-position:center top}
 .klkt-flow__scroll{overflow:hidden}
 .klkt-flow__scroll img{animation:klkt-flow-scroll 12s ease-in-out infinite alternate}
 @keyframes klkt-flow-scroll{0%,12%{transform:translateY(0)}88%,100%{transform:translateY(-28%)}}
@@ -5955,5 +5958,13 @@ footer[data-section-container] .bg-surface-bg-primary { background-color: #2b146
   .klkt-header.is-scrolled{background:rgba(255,255,255,.95)}
 }
 @media (prefers-reduced-motion:reduce){.klkt-header{transition:none}}
+/* Mobile: stop the header spilling past the viewport */
+@media (max-width:760px){
+  .klkt-header__inner{min-width:0}
+  .klkt-menu-btn{margin-left:0}
+  .klkt-brand{min-width:0;flex-shrink:1;overflow:hidden}
+  .klkt-brand img{max-width:100%;height:auto}
+}
+
 </style>
 </body></html>
