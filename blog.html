@@ -1,6 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><style id="klkt-brand-size">.klkt-brand img{height:24px;width:auto;max-width:100%;display:block}@media (max-width:760px){.klkt-brand img{height:18px}}@media (max-width:400px){.klkt-brand img{height:16px}}</style>
+<head><style id="klkt-brand-size">.klkt-brand img{height:24px;width:auto;max-width:100%;display:block}@media (max-width:760px){.klkt-brand img{height:18px}}@media (max-width:400px){.klkt-brand img{height:16px}}</style><style id="klkt-mobile-ux">
+/* Mobile behaviour, not just sizing */
+
+/* Anchor jumps must clear the sticky header */
+html{scroll-padding-top:84px}
+@media (max-width:760px){html{scroll-padding-top:76px}}
+
+/* iOS: stop Safari inflating text when the phone rotates */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+/* Kill the 300ms tap delay and the grey flash on tap */
+a,button,[role="button"],summary,label{touch-action:manipulation;-webkit-tap-highlight-color:rgba(122,60,245,.14)}
+
+@media (max-width:760px){
+  /* Real finger-sized rows, rather than an overlay that would collide with neighbours */
+  footer a,
+  .klkt-footer-custom__column a,
+  .klkt-footer-custom__bottom a{min-height:44px;display:inline-flex;align-items:center}
+  footer li{display:flex}
+
+  /* Carousel dots: still 8px to the eye, but a 44px-tall strip to the thumb.
+     Widened only to 16px so neighbouring dots cannot swallow each other's taps. */
+  button[class*="h-[8px]"]{
+    box-sizing:content-box;padding:18px 4px;background-clip:content-box}
+
+  /* Horizontal tracks: momentum, and don't let a sideways swipe trigger back-navigation */
+  [style*="overflow-x"],.klkt-backed__logos,.klkt-clips__track,.klkt-how__track,
+  .robo-shift__viewport,[class*="scroller"],[class*="track"]{
+    -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+
+  /* Nav links in the slide-out menu deserve a full row to tap */
+  .klkt-nav a{min-height:44px;display:flex;align-items:center}
+}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
   <meta charset="utf-8">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">

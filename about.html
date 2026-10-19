@@ -1,4 +1,40 @@
-<html lang="en" class="gab-dismissed" data-browser-extension-detection-initialized="true" style="--header-height: 64px;"><head><style id="klkt-brand-size">.klkt-brand img{height:24px;width:auto;max-width:100%;display:block}@media (max-width:760px){.klkt-brand img{height:18px}}@media (max-width:400px){.klkt-brand img{height:16px}}</style>
+<html lang="en" class="gab-dismissed" data-browser-extension-detection-initialized="true" style="--header-height: 64px;"><head><style id="klkt-brand-size">.klkt-brand img{height:24px;width:auto;max-width:100%;display:block}@media (max-width:760px){.klkt-brand img{height:18px}}@media (max-width:400px){.klkt-brand img{height:16px}}</style><style id="klkt-mobile-ux">
+/* Mobile behaviour, not just sizing */
+
+/* Anchor jumps must clear the sticky header */
+html{scroll-padding-top:84px}
+@media (max-width:760px){html{scroll-padding-top:76px}}
+
+/* iOS: stop Safari inflating text when the phone rotates */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+/* Kill the 300ms tap delay and the grey flash on tap */
+a,button,[role="button"],summary,label{touch-action:manipulation;-webkit-tap-highlight-color:rgba(122,60,245,.14)}
+
+@media (max-width:760px){
+  /* Real finger-sized rows, rather than an overlay that would collide with neighbours */
+  footer a,
+  .klkt-footer-custom__column a,
+  .klkt-footer-custom__bottom a{min-height:44px;display:inline-flex;align-items:center}
+  footer li{display:flex}
+
+  /* Carousel dots: still 8px to the eye, but a 44px-tall strip to the thumb.
+     Widened only to 16px so neighbouring dots cannot swallow each other's taps. */
+  button[class*="h-[8px]"]{
+    box-sizing:content-box;padding:18px 4px;background-clip:content-box}
+
+  /* Horizontal tracks: momentum, and don't let a sideways swipe trigger back-navigation */
+  [style*="overflow-x"],.klkt-backed__logos,.klkt-clips__track,.klkt-how__track,
+  .robo-shift__viewport,[class*="scroller"],[class*="track"]{
+    -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+
+  /* Nav links in the slide-out menu deserve a full row to tap */
+  .klkt-nav a{min-height:44px;display:flex;align-items:center}
+}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
 		<script type="text/javascript" src="https://evs.s.calendly.com/next-integrations/middleware/analytics.js-middleware-braze-deduplicate/latest/analytics.js-middleware-braze-deduplicate.js.gz" async="" status="loaded"></script><script type="text/javascript" src="https://evs.s.calendly.com/next-integrations/actions/braze-cloud-plugins/c3dbe2dde9d1804663f0.js" async="" status="loaded"></script><script type="text/javascript" src="https://evs.s.calendly.com/next-integrations/actions/amplitude-plugins/f12a4347e1080fb88155.js" async="" status="loaded"></script><script type="text/javascript" async="" src="//munchkin.marketo.net/165/munchkin.js"></script><script async="" src="https://snap.licdn.com/li.lms-analytics/insight.old.min.js"></script><script async="" type="text/javascript" id="__radar__" data-settings="{&quot;cdn&quot;:&quot;cdn.claydar.com&quot;,&quot;apiEndpoint&quot;:&quot;https://api.claydar.com&quot;,&quot;profileId&quot;:&quot;cCpNK8AfM9&quot;,&quot;namespace&quot;:&quot;Claydar&quot;}" src="https://cdn.claydar.com/releases/latest/radar.min.js"></script><script src="https://x.clearbitjs.com/v2/pk_65525065faa0a9836c4105caaab84789/tracking.min.js" referrerpolicy="strict-origin-when-cross-origin" async=""></script><script src="https://x.clearbitjs.com/v2/pk_65525065faa0a9836c4105caaab84789/destinations.min.js" referrerpolicy="strict-origin-when-cross-origin" async=""></script><script type="text/javascript" async="" src="https://snap.licdn.com/li.lms-analytics/insight.min.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-725106552&amp;cx=c&amp;gtm=4e69u2"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-W3RGHP8"></script><script>
 			(function (m, a, z, e) {
 				var s, t;
